@@ -1,0 +1,514 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0", 
+      "title": "Enyata Backend",
+      "description": "Enyata Application API",
+      "license": {
+        "name": "Anyikwa chisom vitus",
+        "url": "https://opensource.org/licenses/MIT"
+      }
+    },
+    "securityDefinitions": {
+        "bearerAuth": {
+          "type": "apiKey",
+          "name": "Authorization",
+          "scheme": "bearer",
+          "in": "header"
+        }
+      },
+    "host": "localhost:5000",
+    "basePath": "/",
+    "tags": [
+      {
+        "name": "Onboarding",
+        "description": "API for Onboarding in the system"
+      },
+      {
+        "name": "Auth",
+        "description": "API for Auth in the system"
+      },
+      {
+        "name": "Wallet",
+        "description": "API for Wallet in the system"
+      }
+    ],
+    "schemes": ["http"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+       
+    
+        "paths": {
+            "/onboarding/signup": {
+               
+              "post": {
+                "tags": ["Onboarding"],
+                "description": "Create new user in system",
+                "parameters": [
+                  {
+                    "name": "user",
+                    "in": "body",
+                    "description": "User that we want to create",
+                    "schema": {
+                      "$ref": "#/definitions/Onboarding"
+                    }
+                  }
+                ],
+                "produces": ["application/json"],
+                "responses": {
+                  "200": {
+                    "description": "New user is created",
+                    "schema": {
+                      "$ref": "#/definitions/Onboarding"
+                    }
+                  }
+                }
+              }
+            },
+
+            "/auth/login": {
+                "post": {
+                  "tags": ["Auth"],
+                  "description": "Create new user in system",
+                  "parameters": [
+                    {
+                      "name": "user",
+                      "in": "body",
+                      "description": "User that we want to create",
+                      "schema": {
+                        "$ref": "#/definitions/Login"
+                      }
+                    }
+                  ],
+                  "produces": ["application/json"],
+                  "responses": {
+                    "200": {
+                      "description": "New user is created",
+                      "schema": {
+                        "$ref": "#/definitions/Login"
+                      }
+                    }
+                  }
+                }
+              },
+
+              "/wallet/update": {
+                "patch": {
+                  "tags": ["Wallet"],
+                  "description": "Create new user in system",
+                  "parameters": [
+                    {
+                      "name": "user",
+                      "in": "body",
+                      "description": "User that we want to create",
+                      "schema": {
+                        "$ref": "#/definitions/Wallet"
+                      }
+                    }
+                  ],
+                  "produces": ["application/json"],
+                  "responses": {
+                    "200": {
+                      "description": "New user is created",
+                      "schema": {
+                        "$ref": "#/definitions/Wallet"
+                      }
+                    }
+                  }
+                }
+              },
+
+              "/wallet/{email}": {
+                "get": {
+                  "tags": ["Wallet"],
+                  "summary": "Get single users Wallet in system",
+                  "responses": {
+                    "200": {
+                      "description": "OK",
+                      "schema": {
+                        "$ref": "#/definitions/Wallet"
+                      }
+                    }
+                  }
+                }
+              },
+
+              "/wallet": {
+                "get": {
+                  "tags": ["Wallet"],
+                  "summary": "Get all users Wallets in system",
+                  "responses": {
+                    "200": {
+                      "description": "OK",
+                      "schema": {
+                        "$ref": "#/definitions/Wallet"
+                      }
+                    }
+                  }
+                }
+              },
+
+              "/wallet/delete/{email}": {
+                "delete": {
+                  "tags": ["Wallet"],
+                  "summary": "Delete single users Wallet in system",
+                  "responses": {
+                    "200": {
+                      "description": "OK",
+                      "schema": {
+                        "$ref": "#/definitions/Wallet"
+                      }
+                    }
+                  }
+                }
+              },
+
+              "/deposit/create": {
+                "post": {
+                  "tags": ["Deposit"],
+                  "summary": "Deposit into the system",
+                  "responses": {
+                    "200": {
+                      "description": "OK",
+                      "schema": {
+                        "$ref": "#/definitions/Deposit"
+                      }
+                    }
+                  }
+                }
+              },
+
+              "/deposit/update/:ref": {
+                "patch": {
+                  "tags": ["Deposit"],
+                  "summary": "Upload deposit Prove of payment",
+                  "responses": {
+                    "200": {
+                      "description": "OK",
+                      "schema": {
+                        "$ref": "#/definitions/Depositref"
+                      }
+                    }
+                  }
+                }
+              },
+
+
+              "/deposit/update/status/:ref": {
+                "patch": {
+                  "tags": ["Deposit"],
+                  "summary": "Admin aprove Deposit transaction ",
+                  "responses": {
+                    "200": {
+                      "description": "OK"
+                      
+                    }
+                  }
+                }
+              },
+
+
+              "/deposit/delete/:ref": {
+                "delete": {
+                  "tags": ["Deposit"],
+                  "summary": "Admin delete deposit transaction ",
+                  "responses": {
+                    "200": {
+                      "description": "OK"
+                      
+                    }
+                  }
+                }
+              },
+
+              "/deposit/:ref": {
+                "get": {
+                  "tags": ["Deposit"],
+                  "summary": "get single deposit transaction ",
+                  "responses": {
+                    "200": {
+                      "description": "OK"
+                      
+                    }
+                  }
+                }
+              },
+
+              "/deposit": {
+                "get": {
+                  "tags": ["Deposit"],
+                  "summary": "get all deposit transaction ",
+                  "responses": {
+                    "200": {
+                      "description": "OK"
+                      
+                    }
+                  }
+                }
+              },
+
+
+
+              "/withdrawal/create": {
+                "post": {
+                  "tags": ["withdrawal"],
+                  "summary": "withdrawal from the system",
+                  "responses": {
+                    "200": {
+                      "description": "OK",
+                      "schema": {
+                        "$ref": "#/definitions/Withdrawal"
+                      }
+                    }
+                  }
+                }
+              },
+
+
+              "/withdrawal/update/status/:ref": {
+                "patch": {
+                  "tags": ["withdrawal"],
+                  "summary": "Updated withdrawal status by the admin",
+                  "responses": {
+                    "200": {
+                      "description": "OK"
+                    }
+                  }
+                }
+              },
+
+
+              "/withdrawal/:ref": {
+                "get": {
+                  "tags": ["withdrawal"],
+                  "summary": "get single withdrawal transaction ",
+                  "responses": {
+                    "200": {
+                      "description": "OK"
+                      
+                    }
+                  }
+                }
+              },
+
+              "/withdrawal": {
+                "get": {
+                  "tags": ["withdrawal"],
+                  "summary": "get all withdrawal transaction ",
+                  "responses": {
+                    "200": {
+                      "description": "OK"
+                      
+                    }
+                  }
+                }
+              },
+
+
+
+              "/siteSetting/create": {
+                "post": {
+                  "tags": ["siteSetting"],
+                  "summary": "Basic Settings of the system",
+                  "responses": {
+                    "200": {
+                      "description": "OK",
+                      "schema": {
+                        "$ref": "#/definitions/siteSetting"
+                      }
+                    }
+                  }
+                }
+              },
+
+
+
+              "/siteSetting/update": {
+                "patch": {
+                  "tags": ["siteSetting"],
+                  "summary": "Update Basic Settings of the system",
+                  "responses": {
+                    "200": {
+                      "description": "OK",
+                      "schema": {
+                        "$ref": "#/definitions/siteSetting"
+                      }
+                    }
+                  }
+                }
+              },
+
+              "/siteSetting": {
+                "get": {
+                  "tags": ["siteSetting"],
+                  "summary": "get site settings of the System ",
+                  "responses": {
+                    "200": {
+                      "description": "OK"
+                      
+                    }
+                  }
+                }
+              }
+
+             
+
+
+          },
+
+
+        "definitions": {
+            "Onboarding": {
+              "required": ["firstName","otherName", "email","phone","password","comfirmPassword"],
+              "properties": {
+                    "firstName": {
+                    "type": "string"
+                    },
+                    "otherName": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "phone": {
+                        "type": "string"
+                    },
+                    "password": {
+                    "type": "string"
+                    },
+                    "comfirmPassword": {
+                    "type": "string"
+                    },
+                    "upliner": {
+                        "type": "string"
+                    }
+                
+                }
+            
+            },
+
+
+            "Login": {
+                "required": [ "email","password"],
+                "properties": {
+                      
+                      "email": {
+                          "type": "string"
+                      },
+    
+                      "password": {
+                      "type": "string"
+                      }
+                  
+                  }
+              
+              },
+              
+              "Wallet": {
+                "required": [ "email","combined","roi","commission"],
+                "properties": {
+                      
+                      "email": {
+                          "type": "string"
+                      },
+    
+                      "combined": {
+                      "type": "number"
+                      },
+                  
+                    "roi": {
+                      "type": "number"
+                    },
+
+                    "commission": {
+                      "type": "number"
+                    },
+                    "main": {
+                      "type": "number"
+                    }
+                  }
+              
+              },
+               
+
+              "Deposit": {
+                "required": [ "email","amount","rate"],
+                "properties": {
+                      
+                      "email": {
+                          "type": "string"
+                      },
+    
+                      "amount": {
+                      "type": "number"
+                      },
+                  
+                    "rate": {
+                      "type": "number"
+                    }
+                  }
+              
+              },
+
+              "Depositref": {
+                "required": ["rate"],
+                "properties": {
+                      
+                      "file": {
+                          "type": "file"
+                      }
+                  }
+              
+              },
+
+
+              "Withdrawal": {
+                "required": [ "email","amount","wallet"],
+                "properties": {
+                      
+                      "email": {
+                          "type": "string"
+                      },
+    
+                      "amount": {
+                      "type": "number"
+                      },
+                  
+                    "wallet": {
+                      "type": "string"
+                    }
+                  }
+              
+              },
+
+
+              "siteSetting": {
+                "required": [ "email","name","phone","rate"],
+                "properties": {
+                      
+                      "email": {
+                          "type": "string"
+                      },
+    
+                      "name": {
+                      "type": "string"
+                      },
+                  
+                    "phone": {
+                      "type": "string"
+                    },
+
+                    "rate": {
+                      "type": "number"
+                    }
+                   
+                  }
+              
+              }
+   
+        }
+
+    
+  }
+
+  
