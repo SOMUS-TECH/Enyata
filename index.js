@@ -5,10 +5,6 @@ require('dotenv').config();
 const { urlencoded } = require('express');
 const onboardingRoutes = require('./v1/routes/onboard');
 const authRoutes = require('./v1/routes/auth');
-const walletsRoutes = require('./v1/routes/wallets');
-const depositRoutes = require('./v1/routes/deposit');
-const withdrawalRoutes = require('./v1/routes/withdrawal');
-const siteSettingRoutes = require('./v1/routes/site_settings');
 const swaggerUi = require('swagger-ui-express'),
 swaggerDocument = require('./swagger.json');
 
